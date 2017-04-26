@@ -1,0 +1,34 @@
+Metodo de solucion de restriciones
+
+--Propagate and search
+Propagar las restricciones
+	A ::: 0#9
+	B ::: 0#9
+
+	B*A =: 24
+
+
+Automoviles
+Logic-puzzles.org
+
+declare proc {Problem3 Root}
+		A G L Y
+		V67 V72 V74 V81
+	in
+		Root = sol(awick:A garusky:G leden:L yamaha:Y
+					v67:V67 v72:V72 v74:V74 v81:V81)
+
+		Root ::: 1#4
+
+		{FD.distinct(A,G,L,Y)}
+		{FD.distinct(V67, V72, V74, V81)}
+
+		A=:V67-2
+		L=:V67+1
+		{FD.distinct(G, V81, V74, V67)}
+		A=:V81
+		{FD.distribute naive Root}
+	end
+
+{Browse {SearchAll Problem3}}
+{ExploreAll Problem3}
